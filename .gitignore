@@ -1,0 +1,26 @@
+# Virtual environments
+nsenv/
+gp1env/
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+logs/
+*.log
+
+# Artifacts
+artifacts/
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
