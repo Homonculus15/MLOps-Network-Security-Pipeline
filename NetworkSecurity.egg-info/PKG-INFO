@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: NetworkSecurity
+Version: 0.0.0.0
+Author: Homonculus15
+Author-email: kulkarniharsh015@gmail.com
+Requires-Dist: python-dotenv
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: pymongo
+Requires-Dist: certifi
