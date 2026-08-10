@@ -1,7 +1,13 @@
-python-dotenv
-pandas
 numpy
+pandas
+scikit-learn
 pymongo
+python-dotenv
 certifi
-
+dill
+Flask
+gunicorn
+mlflow
+dagshub
+evidently
 -e .
