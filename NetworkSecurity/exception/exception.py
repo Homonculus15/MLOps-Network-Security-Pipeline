@@ -4,7 +4,7 @@ from NetworkSecurity.logging.logger import logging
 
 class NetworkSecurityException(Exception):
 
-    def __init__(self, error_message, error_detail: sys):
+    def __init__(self, error_message, error_detail):
         self.error_message = error_message
 
         _, _, exc_tb = error_detail.exc_info()
@@ -21,7 +21,7 @@ class NetworkSecurityException(Exception):
 
 if __name__ == '__main__':
     try:
-        logger.logging.info("Enter the try block")
+        logging.info("Enter the try block")
 
         a = 1 / 0
 
