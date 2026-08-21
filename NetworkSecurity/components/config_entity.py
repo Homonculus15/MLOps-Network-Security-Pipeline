@@ -55,16 +55,3 @@ class DataValidationConfig:
             training_pipeline.DAT_VALIDATION_DRIFT_REPORT_FILE_NAME
         )
         
-class DataTransformationConfig:
-    def __init__(self,training_pipeline_config: TrainingPipelineConfig):
-        self.data_transformation_dir: str=os.path.join(training_pipeline_config.artifact_dir,training_pipeline.DATA_TRANSFORMATION_DIR_NAME)
-        self.transformed_data_dir: str=os.path.join(self.data_transformation_dir,training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR)
-        self.transformed_data_object_dir: str=os.path.join(self.transformed_data_dir,training_pipeline.DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR)
-        
-        self.transformed_train_file_path: str=os.path.join(self.transformed_data_object_dir,training_pipeline.TRAIN_FILE_NAME)
-        self.transformed_test_file_path: str=os.path.join(self.transformed_data_object_dir,training_pipeline.TEST_FILE_NAME)
-        
-        self.transformed_object_file_path: str=os.path.join(self.transformed_data_object_dir,training_pipeline.DATA_TRANSFORMATION_OBJECT_FILE_NAME)
-        
-        self.imputer_params: dict=training_pipeline.DATA_TRANSFORMATION_IMPUTER_PARAMS
-        
