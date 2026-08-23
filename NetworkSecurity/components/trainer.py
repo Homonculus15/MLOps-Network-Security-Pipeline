@@ -25,6 +25,9 @@ from sklearn.ensemble import RandomForestClassifier
 import mlflow
 import mlflow.sklearn as mlflow_sklearn
 
+import dagshub
+dagshub.init(repo_owner='Homonculus15', repo_name='MLOps-Network-Security-Pipeline', mlflow=True)
+
 
 class ModelTrainer:
     def __init__(self,model_trainer_config:ModelTrainerConfig,data_transformation_artifact:DataTransformationArtifact):
@@ -73,7 +76,7 @@ class ModelTrainer:
 
             "Gradient Boosting": {
                 # "loss": ["log_loss", "exponential"],
-                "learning_rate": [0.01, 0.05, 0.1],
+                "learning_rate": [0.01, 0.05, 0.1, 1.0],
                 "n_estimators": [8,16,32,64,128,256],
                 "subsample": [0.6,0.7,0.75,0.8,0.85,0.9],
                 "criterion": ["friedman_mse", "squared_error"],
@@ -88,7 +91,7 @@ class ModelTrainer:
 
             "Adaboost": {
                 "n_estimators": [8,16,32,64,128,256],
-                "learning_rate": [0.01, 0.1, 0.5, 0.001]
+                "learning_rate": [0.01, 0.1, 0.5, 0.001,1.0]
                 }
         }
         model_report:dict=evaluate_models(
@@ -133,6 +136,8 @@ class ModelTrainer:
         
         Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
         save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
+        
+        save_object("final_model/model.pkl",best_model)
         
         #Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
