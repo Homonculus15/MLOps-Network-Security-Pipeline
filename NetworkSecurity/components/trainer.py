@@ -50,11 +50,11 @@ class ModelTrainer:
         
     def train_model(self,X_train,y_train,X_test,y_test):
         models={
-            "Random Forest": RandomForestClassifier(verbose=1),
+            "Random Forest": RandomForestClassifier(verbose=1,random_state=42),
             "Decision Tree": DecisionTreeClassifier(),
-            "Gradient Boosting": GradientBoostingClassifier(verbose=1),
+            "Gradient Boosting": GradientBoostingClassifier(verbose=1,random_state=42),
             "Logistic Regression": LogisticRegression(verbose=1),
-            "Adaboost": AdaBoostClassifier()
+            "Adaboost": AdaBoostClassifier(random_state=42)
         }
         
         params = {
@@ -134,10 +134,10 @@ class ModelTrainer:
         model_dir_path=os.path.dirname(self.model_trainer_config.trained_model_file_path)
         os.makedirs(model_dir_path,exist_ok=True)
         
-        Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
-        save_object(self.model_trainer_config.trained_model_file_path,obj=NetworkModel)
-        
-        save_object("final_model/model.pkl",best_model)
+        network_model=NetworkModel(preprocessor=preprocessor,model=best_model)
+        print("DEBUG Network Model Type:", type(network_model))
+        print("DEBUG Network Model Dict:", network_model.__dict__)
+        save_object(self.model_trainer_config.trained_model_file_path,obj=network_model)
         
         #Model Trainer Artifact
         model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
