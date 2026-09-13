@@ -12,4 +12,4 @@ dagshub
 evidently
 fastapi
 uvicorn
--e .
+#-e .
