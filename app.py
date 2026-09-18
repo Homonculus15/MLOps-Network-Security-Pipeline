@@ -64,6 +64,8 @@ async def train_route():
 async def predict_route(request:Request,file:UploadFile=File(...)):
     try:
         df=pd.read_csv(file.file)
+        if "Result" in df.columns:
+            df = df.drop(columns=["Result"])
         #print(df)
         preprocessor=load_object("final_model/preprocessing.pkl")
         final_model=load_object("final_model/model.pkl")
