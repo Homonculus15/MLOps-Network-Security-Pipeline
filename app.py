@@ -22,6 +22,7 @@ from starlette.responses import RedirectResponse
 import pandas as pd 
 
 from NetworkSecurity.utils.main_utils.utils import load_object
+from NetworkSecurity.utils.ml_utils.model.estimator import NetworkModel
 
 from NetworkSecurity.constants.training_pipeline import DATA_INGESTION_DATABASE_NAME
 from NetworkSecurity.constants.training_pipeline import DATA_INGESTION_COLLECTION_NAME
@@ -64,10 +65,10 @@ async def predict_route(request:Request,file:UploadFile=File(...)):
     try:
         df=pd.read_csv(file.file)
         #print(df)
-        #preprocessor=load_object("final_model/preprocessor.pkl")
-        #final_model=load_object("final_model/model.pkl")
-        #network_model=NetworkModel(preprocessor=preprocessor,model=final_model)
-        network_model = load_object(r"Artifacts\09_06_2026_15_31_11\model_trainer\trained_model")
+        preprocessor=load_object("final_model/preprocessing.pkl")
+        final_model=load_object("final_model/model.pkl")
+        network_model=NetworkModel(preprocessor=preprocessor,model=final_model)
+        #network_model = load_object(r"Artifacts\09_06_2026_15_31_11\model_trainer\trained_model")
         print(df.iloc[0])
         y_pred=network_model.predict(df)
         print(y_pred)
