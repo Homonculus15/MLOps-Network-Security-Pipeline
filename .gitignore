@@ -19,6 +19,16 @@ logs/
 # Artifacts
 artifacts/
 
+# MLflow local tracking store (machine-specific, not meant to be shared)
+mlflow.db
+
+# Training pipeline outputs — regenerated on every /train run
+valid_data/
+prediction_output/
+
+# Scratch / debug runs — not part of the shipped pipeline
+s3 test runs/
+
 # VS Code
 .vscode/
 
