@@ -3,7 +3,7 @@
 An end-to-end machine learning system for network security / phishing-website detection, built with production MLOps practices — automated data ingestion, experiment tracking, containerized inference, and a full CI/CD pipeline deploying to AWS EC2.
 
 **Repo:** [github.com/Homonculus15/MLOps-Network-Security-Pipeline](https://github.com/Homonculus15/MLOps-Network-Security-Pipeline)
-**Live demo:** `http://<your-ec2-public-ip>:8080/docs`
+**Live demo:** http://100.53.239.112:8080/docs
 
 ---
 
